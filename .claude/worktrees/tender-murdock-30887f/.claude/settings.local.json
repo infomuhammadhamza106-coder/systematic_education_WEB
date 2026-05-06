@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/assets/images/study-text-acca-fia-fbt.webp\" \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/public/images/study-text-acca-fia-fbt.webp\")",
+      "Bash(cp \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/assets/images/exam-kit-acca-fia-fbt.webp\" \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/public/images/exam-kit-acca-fia-fbt.webp\")",
+      "Bash(cp \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/assets/images/study-text-acca-fia-fbt.webp\" \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/.claude/worktrees/tender-murdock-30887f/frontend/public/images/study-text-acca-fia-fbt.webp\")",
+      "Bash(cp \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/assets/images/exam-kit-acca-fia-fbt.webp\" \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/.claude/worktrees/tender-murdock-30887f/frontend/public/images/exam-kit-acca-fia-fbt.webp\")",
+      "Bash(netstat -ano)",
+      "PowerShell(Get-Process -Id 23836)",
+      "PowerShell(Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -eq 23836 -or $_.ProcessId -eq 6872 } | Select-Object ProcessId, Name, CommandLine | Format-List)",
+      "PowerShell($p = Get-CimInstance Win32_Process -Filter \"ProcessId=25208\"; $parent = Get-CimInstance Win32_Process -Filter \"ProcessId=$\\($p.ParentProcessId\\)\"; \"PID: $\\($p.ProcessId\\) | Parent PID: $\\($p.ParentProcessId\\) | Parent Name: $\\($parent.Name\\) | Parent CMD: $\\($parent.CommandLine\\)\")",
+      "Bash(curl -s \"http://localhost:5000/api/products/acca\")",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); bt=[p for p in data['data'] if p['id']=='bt'][0]; print\\('img:', bt.get\\('img','NOT SET'\\)\\); print\\('kitImg:', bt.get\\('kitImg','NOT SET'\\)\\)\")",
+      "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\);const r=JSON.parse\\(d\\);const bt=r.data.find\\(p=>p.id==='bt'\\);console.log\\('img:',bt.img||'NOT SET'\\);console.log\\('kitImg:',bt.kitImg||'NOT SET'\\)\")",
+      "Bash(cp \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/assets/images/study-text-acca-ma1.webp\" \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/public/images/study-text-acca-ma1.webp\")",
+      "Bash(cp \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/assets/images/exam-kit-acca-ma1.webp\" \"C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/public/images/exam-kit-acca-ma1.webp\")",
+      "Read(//c/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/**)",
+      "Bash(cp assets/images/study-text-acca-bt2cb489ef-b1e6-4ba4-a2e6-1ba43c7ecbad.webp frontend/public/images/)",
+      "Bash(cp assets/images/exam-kit-acca-bta192c1f0-1047-4da1-85d7-b6d851cdc589.webp frontend/public/images/)",
+      "Bash(cp assets/images/study-text-acca-fa.webp frontend/public/images/)",
+      "Bash(cp assets/images/exam-kit-acca-fa.webp frontend/public/images/)",
+      "Bash(cp \"assets/images/study-text-cima-certificate-fundamentals-of-business-economics-ba1-2x.png\" frontend/public/images/)",
+      "Bash(cp \"assets/images/exam-cima-certificate-fundamentals-of-business-economics-ba1-2x.png\" frontend/public/images/)",
+      "Bash(cp \"assets/images/study-text-cima-certificate-fundamentals-of-ethics-corporate-governance-and-business-law-ba2-2x.png\" frontend/public/images/)",
+      "Bash(cp \"assets/images/exam-cima-certificate-fundamentals-of-ethics-corporate-governance-and-business-law-ba2-2x.png\" frontend/public/images/)",
+      "Bash(cp \"assets/images/study-text-cima-certificate-fundamentals-of-ethics-corporate-governance-and-business-law-ba3-2x.png\" frontend/public/images/)",
+      "Bash(cp \"assets/images/study-text-cima-strategic-e3cbd820ad2adb676aab54ff5000b377c6.png\" frontend/public/images/)",
+      "Bash(cp \"assets/images/single-item-exam-strategic-cima_e3.png\" frontend/public/images/)",
+      "Bash(cp \"assets/images/study-text-cima-strategic-p3b2d920ad2adb676aab54ff5000b377c6.png\" frontend/public/images/)",
+      "Bash(cp \"assets/images/exam-kit-strategic-cima_p3.png\" frontend/public/images/)",
+      "Bash(cp \"assets/images/study-text-cima-strategic-f3ccd920ad2adb676aab54ff5000b377c6.png\" frontend/public/images/)",
+      "Bash(cp /c/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/src/components/ProductCard.jsx frontend/src/components/)",
+      "Bash(cp /c/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/src/components/ProductCard.css frontend/src/components/)",
+      "Bash(cp /c/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/src/App.jsx frontend/src/)",
+      "Bash(cp /c/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/src/pages/Cart.jsx /c/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/.claude/worktrees/tender-murdock-30887f/frontend/src/pages/Cart.jsx)",
+      "Bash(cp /c/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/src/pages/Cart.css /c/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/.claude/worktrees/tender-murdock-30887f/frontend/src/pages/Cart.css)",
+      "Bash(cp /c/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/backend/routes/orders.js /c/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/.claude/worktrees/tender-murdock-30887f/backend/routes/orders.js)",
+      "Bash(node -e \"require\\('./routes/orders'\\)\")"
+    ]
+  }
+}

@@ -1,92 +1,85 @@
-/* ── Tabs ──────────────────────────────────────────────── */
+/* ── Level Tabs ─────────────────────────────────────────── */
 .shop-tabs {
   display: flex;
-  gap: 6px;
+  gap: 0;
   flex-wrap: wrap;
-  margin-bottom: 48px;
-  padding-bottom: 20px;
+  margin-bottom: 44px;
   border-bottom: 1px solid var(--border);
 }
 .shop-tab {
-  padding: 9px 22px;
-  border-radius: 8px;
-  font-size: 0.83rem;
-  font-weight: 600;
-  border: 1.5px solid var(--border);
-  background: #fff;
-  color: var(--text-muted);
+  padding: 10px 22px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: var(--slate);
   cursor: pointer;
-  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.18s, border-color 0.18s;
   font-family: 'Inter', sans-serif;
+  white-space: nowrap;
 }
-.shop-tab:hover  { border-color: var(--blue-mid); color: var(--blue-mid); }
-.shop-tab.active { background: var(--blue); color: #fff; border-color: var(--blue); box-shadow: 0 4px 12px rgba(26,63,122,0.25); }
+.shop-tab:hover  { color: var(--navy); }
+.shop-tab.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
 
-/* ── Section Headers ───────────────────────────────────── */
+/* ── Section headers ────────────────────────────────────── */
 .shop-section { margin-bottom: 60px; }
 .shop-section:last-child { margin-bottom: 0; }
 
 .shop-section-header {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 28px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border);
 }
 .shop-section-bar {
   width: 4px;
-  height: 44px;
+  height: 28px;
   border-radius: 4px;
   flex-shrink: 0;
 }
 .shop-section-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--navy);
-  margin: 0 0 3px;
-}
-.shop-section-desc {
-  font-size: 0.78rem;
-  color: var(--text-muted);
   margin: 0;
+  flex: 1;
 }
 .shop-section-count {
-  margin-left: auto;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--blue);
+  color: #fff;
   border-radius: 20px;
-  padding: 4px 14px;
-  font-size: 0.76rem;
+  padding: 3px 12px;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: var(--text-muted);
+  letter-spacing: 0.3px;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-/* ── Loading ───────────────────────────────────────────── */
+/* ── Loading ────────────────────────────────────────────── */
 .shop-loading {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 80px 0;
-  color: var(--text-muted);
+  color: var(--slate);
   gap: 16px;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 .shop-spinner {
-  width: 36px; height: 36px;
-  border: 3px solid var(--border);
+  width: 32px; height: 32px;
+  border: 2px solid var(--border);
   border-top-color: var(--blue);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ── Mobile ────────────────────────────────────────────── */
+/* ── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .shop-tabs      { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; }
-  .shop-tab       { white-space: nowrap; }
+  .shop-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 0; }
   .shop-section-count { display: none; }
 }

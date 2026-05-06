@@ -47,7 +47,7 @@ export default function AdminLogin() {
         <p className="admin-login-sub">Enter your admin password to continue.</p>
 
         {error && (
-          <div className="admin-alert admin-alert-error">❌ {error}</div>
+          <div className="admin-alert admin-alert-error">{error}</div>
         )}
 
         <form onSubmit={handleLogin}>
@@ -63,7 +63,7 @@ export default function AdminLogin() {
             />
           </div>
           <button type="submit" className="admin-btn admin-btn-primary" disabled={loading}>
-            {loading ? '⏳ Signing in...' : '🔐 Sign In'}
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 

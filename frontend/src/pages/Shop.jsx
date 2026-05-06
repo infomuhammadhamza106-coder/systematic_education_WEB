@@ -12,9 +12,9 @@ const CATEGORIES = [
 ]
 
 const SECTION_META = {
-  knowledge:    { color: 'var(--green)',     label: 'Applied Knowledge',     desc: 'BT, MA & FA — foundation level papers' },
-  skills:       { color: 'var(--blue-mid)',  label: 'Applied Skills',        desc: 'LW, PM, TX, FR, AA & FM' },
-  professional: { color: 'var(--accent)',    label: 'Strategic Professional', desc: 'SBL, SBR, AFM, APM, ATX & AAA' },
+  knowledge:    { color: 'var(--green)',  label: 'Applied Knowledge',      desc: 'BT, MA & FA — foundation level papers' },
+  skills:       { color: 'var(--blue)',   label: 'Applied Skills',         desc: 'LW, PM, TX, FR, AA & FM' },
+  professional: { color: 'var(--navy)',   label: 'Strategic Professional', desc: 'SBL, SBR, AFM, APM, ATX & AAA' },
 }
 
 export default function Shop() {
@@ -50,7 +50,7 @@ export default function Shop() {
       {/* Hero */}
       <section className="page-hero">
         <div className="container">
-          <div className="section-eyebrow" style={{ color: 'rgba(255,255,255,0.5)' }}>2025–26 Editions</div>
+          <span className="page-hero-label">2025–26 Editions</span>
           <h1>ACCA Study Materials</h1>
           <p>Genuine Kaplan ACCA Study Texts &amp; Exam Kits for 2025–26. 100% ACCA-approved — physical books and eBook access.</p>
         </div>
@@ -91,11 +91,8 @@ export default function Shop() {
                   <div key={key} className="shop-section">
                     <div className="shop-section-header">
                       <div className="shop-section-bar" style={{ background: meta.color }} />
-                      <div>
-                        <h2 className="shop-section-title">{meta.label}</h2>
-                        <p className="shop-section-desc">{meta.desc}</p>
-                      </div>
-                      <div className="shop-section-count">{items.length} books</div>
+                      <h2 className="shop-section-title">{meta.label}</h2>
+                      <span className="shop-section-count">{items.length} books</span>
                     </div>
                     <div className="products-grid">
                       {items.map(p => <ProductCard key={p.id} product={p} />)}

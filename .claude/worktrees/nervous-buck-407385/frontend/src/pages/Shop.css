@@ -1,0 +1,93 @@
+/* ── Level Tabs ─────────────────────────────────────────── */
+.shop-tabs {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+  border-bottom: 1px solid var(--border);
+}
+.shop-tab {
+  padding: 10px 22px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: var(--slate);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.18s, border-color 0.18s;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+}
+.shop-tab:hover  { color: var(--navy); }
+.shop-tab.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
+
+/* ── Section headers ────────────────────────────────────── */
+.shop-section { margin-bottom: 56px; }
+.shop-section:last-child { margin-bottom: 0; }
+
+.shop-section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.shop-section-bar {
+  width: 3px;
+  height: 36px;
+  background: var(--blue);
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+.shop-section-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 2px;
+}
+.shop-section-desc {
+  font-size: 0.77rem;
+  color: var(--slate);
+  margin: 0;
+}
+.shop-section-count {
+  margin-left: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 3px 12px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--slate);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Loading ────────────────────────────────────────────── */
+.shop-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0;
+  color: var(--slate);
+  gap: 16px;
+  font-size: 0.875rem;
+}
+.shop-spinner {
+  width: 32px; height: 32px;
+  border: 2px solid var(--border);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Mobile ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .shop-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 0; }
+  .shop-section-count { display: none; }
+}

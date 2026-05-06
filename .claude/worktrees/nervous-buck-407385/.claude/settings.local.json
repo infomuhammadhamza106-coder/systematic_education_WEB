@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/.claude/worktrees/nervous-buck-407385/frontend/src/index.css C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/src/index.css)",
+      "Bash(cp C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/.claude/worktrees/nervous-buck-407385/frontend/src/components/AnnouncementBar.jsx C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/src/components/AnnouncementBar.jsx)",
+      "Bash(cp C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/.claude/worktrees/nervous-buck-407385/frontend/src/components/AnnouncementBar.css C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/src/components/AnnouncementBar.css)",
+      "Bash(cp C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/.claude/worktrees/nervous-buck-407385/frontend/src/components/Navbar.jsx C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/src/components/Navbar.jsx)",
+      "Bash(cp C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/.claude/worktrees/nervous-buck-407385/frontend/src/components/Navbar.css C:/Users/chkhu/Downloads/pakistan-publishing-website/pakistan-publishing-website/frontend/src/components/Navbar.css)"
+    ]
+  }
+}
