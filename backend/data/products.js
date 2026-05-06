@@ -196,9 +196,8 @@ const cimaProducts = [
     availability: 'eBook Only', inStock: true,
     img: '/images/study-text-cima-certificate-fundamentals-of-business-economics-ba1-2x.png',
     books: [
-      { type: 'Study Text',       typeCode: 'text',     price: 6000, img: '/images/study-text-cima-certificate-fundamentals-of-business-economics-ba1-2x.png', desc: 'Covers all BA1 syllabus areas with worked examples, activities and exam-style questions.' },
-      { type: 'Exam Practice Kit', typeCode: 'kit',     price: 4000, img: '/images/exam-cima-certificate-fundamentals-of-business-economics-ba1-2x.png',       desc: 'Packed with past and practice exam questions to build exam technique and confidence.' },
-      { type: 'Revision Cards',   typeCode: 'revision', price: 2500, img: '/images/cima/ba1/revision-cards.png', desc: 'Compact A6 revision cards summarising key topics for quick pre-exam revision.' },
+      { type: 'Study Text',        typeCode: 'text', price: 6000, img: '/images/study-text-cima-certificate-fundamentals-of-business-economics-ba1-2x.png', desc: 'Covers all BA1 syllabus areas with worked examples, activities and exam-style questions.' },
+      { type: 'Exam Practice Kit', typeCode: 'kit',  price: 4000, img: '/images/exam-cima-certificate-fundamentals-of-business-economics-ba1-2x.png',       desc: 'Packed with past and practice exam questions to build exam technique and confidence.' },
     ],
   },
   {
