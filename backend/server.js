@@ -34,9 +34,15 @@ app.use((req, res) => {
   res.status(404).json({ success: false, message: 'Route not found' });
 });
 
-app.listen(PORT, () => {
-  console.log(`\n🚀 Systematics Education API  →  http://localhost:${PORT}`);
-  console.log(`📚 Products  →  /api/products/acca`);
-  console.log(`🛒 Orders    →  POST /api/orders`);
-  console.log(`🔐 Admin     →  /api/admin/orders\n`);
-});
+// Only start server when run directly (not on Vercel)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`\n🚀 Systematics Education API  →  http://localhost:${PORT}`);
+    console.log(`📚 Products  →  /api/products/acca`);
+    console.log(`🛒 Orders    →  POST /api/orders`);
+    console.log(`🔐 Admin     →  /api/admin/orders\n`);
+  });
+}
+
+// Export for Vercel serverless
+module.exports = app;
