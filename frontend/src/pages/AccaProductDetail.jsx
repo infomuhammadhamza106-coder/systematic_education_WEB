@@ -101,7 +101,7 @@ export default function AccaProductDetail() {
           </h1>
           <p className="apd-hero-desc">{product.desc}</p>
           <div className="apd-hero-meta">
-            <span><CheckIcon /> Physical &amp; eBook</span>
+            <span><CheckIcon /> Printed &amp; eBook</span>
             <span><CheckIcon /> Kaplan Publishing</span>
             <span><CheckIcon /> Valid until {product.validUntil}</span>
           </div>

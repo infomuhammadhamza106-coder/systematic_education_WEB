@@ -77,7 +77,10 @@ export default function About() {
                 Systematics Education has been Pakistan's trusted source for ACCA and CIMA study materials since <strong>1998</strong> — over 27 years of serving students across the country.
               </p>
               <p style={{ color: 'var(--slate)', lineHeight: 1.85, marginBottom: '14px', fontSize: '0.95rem' }}>
-                As an <strong>authorised Kaplan distributor</strong>, we supply 100% genuine, ACCA-approved Study Texts and Exam Kits — delivered to your door from Karachi to Gilgit.
+                As an <strong>official Kaplan distributor</strong>, we supply 100% genuine, ACCA-approved Study Texts and Exam Kits — delivered to your door from Karachi to Gilgit.
+              </p>
+              <p style={{ color: 'var(--slate)', lineHeight: 1.85, marginBottom: '14px', fontSize: '0.95rem' }}>
+                Beyond books, we also provide <strong>Tutor Resources</strong> and <strong>Intra Assessment Mocks</strong> to help educators and students prepare comprehensively for every exam session.
               </p>
               <p style={{ color: 'var(--slate)', lineHeight: 1.85, marginBottom: '28px', fontSize: '0.95rem' }}>
                 With over <strong>15,000 students</strong> supported, we are committed to making world-class study resources accessible to every student in Pakistan.
@@ -92,6 +95,38 @@ export default function About() {
               <div className="stat-item"><div className="stat-num">25+</div><div className="stat-label">Years serving ACCA students since 1998</div></div>
               <div className="stat-item"><div className="stat-num">15,000+</div><div className="stat-label">Students supported across Pakistan</div></div>
               <div className="stat-item"><div className="stat-num">100%</div><div className="stat-label">Genuine ACCA Approved publications</div></div>
+            </div>
+          </div>
+
+          {/* ACCA Content Partner */}
+          <div className="about-partner">
+            <div className="about-partner-card">
+              <div className="about-partner-logo">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="acca-partner-svg">
+                  <circle cx="100" cy="100" r="95" stroke="#1a1a1a" strokeWidth="3" fill="#fff"/>
+                  <rect x="72" y="72" width="56" height="56" rx="4" fill="#c8102e"/>
+                  <text x="100" y="107" textAnchor="middle" fill="#fff" fontSize="22" fontWeight="bold" fontFamily="Arial, sans-serif">ACCA</text>
+                  <rect x="62" y="62" width="14" height="14" rx="2" fill="#c8102e"/>
+                  <rect x="124" y="62" width="14" height="14" rx="2" fill="#c8102e"/>
+                  <rect x="62" y="124" width="14" height="14" rx="2" fill="#c8102e"/>
+                  <rect x="124" y="124" width="14" height="14" rx="2" fill="#c8102e"/>
+                  <text x="100" y="48" textAnchor="middle" fill="#1a1a1a" fontSize="20" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="4">CONTENT</text>
+                  <text x="100" y="170" textAnchor="middle" fill="#1a1a1a" fontSize="20" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="4">PARTNER</text>
+                </svg>
+              </div>
+              <div className="about-partner-info">
+                <h3>ACCA Approved Content Partner</h3>
+                <p>
+                  Systematics Education is a proud <strong>ACCA Approved Content Partner</strong> in Pakistan. This means all our Kaplan study materials carry the official ACCA Approved Content seal — ensuring that every Study Text, Exam Kit, Tutor Resource, and Intra Assessment Mock meets ACCA's rigorous quality standards.
+                </p>
+                <div className="about-partner-tags">
+                  <span className="partner-tag">✓ Study Texts</span>
+                  <span className="partner-tag">✓ Exam Kits</span>
+                  <span className="partner-tag">✓ Tutor Resources</span>
+                  <span className="partner-tag">✓ Intra Assessment Mocks</span>
+                  <span className="partner-tag">✓ eBooks &amp; Digital Access</span>
+                </div>
+              </div>
             </div>
           </div>
 

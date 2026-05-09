@@ -128,7 +128,7 @@ export default function PriceList() {
         <div className="container">
           <span className="page-hero-label">Updated 2025–26</span>
           <h1>Price List</h1>
-          <p>All ACCA and CIMA study material prices. ACCA books are available physical + eBook; CIMA books are eBook only. Prices in PKR.</p>
+          <p>All ACCA and CIMA study material prices. ACCA books are available printed + eBook; CIMA books are eBook only. Prices in PKR.</p>
         </div>
       </section>
 

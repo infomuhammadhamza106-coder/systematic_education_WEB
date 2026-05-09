@@ -101,7 +101,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Systematics Education (SMC-PVT) LTD. All rights reserved.</p>
-          <p className="footer-bottom-right">Official ACCA Approved Distributor</p>
+          <p className="footer-bottom-right">Official Kaplan Distributor — Pakistan</p>
         </div>
       </div>
     </footer>

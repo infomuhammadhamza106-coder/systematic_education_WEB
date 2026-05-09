@@ -34,16 +34,24 @@
 
 .hero-title {
   font-family: 'Libre Baskerville', serif;
-  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
   margin-bottom: 22px;
   color: #fff;
   letter-spacing: -0.3px;
 }
 .hero-title em {
   font-style: italic;
-  color: rgba(255,255,255,0.78);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.6em;
+  letter-spacing: 1px;
+}
+.hero-highlight {
+  background: linear-gradient(135deg, #e8c547, #f0a030);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-desc {
@@ -159,6 +167,116 @@
 .cta-text p { color: rgba(255,255,255,0.5); font-size: 0.925rem; }
 .cta-actions { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
 
+/* ── Promo Section ───────────────────────────────────────── */
+.promo-section {
+  background: linear-gradient(180deg, var(--surface) 0%, #fff 100%);
+}
+.promo-label {
+  font-size: 0.85rem !important;
+}
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.promo-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 36px 28px 32px;
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+  overflow: hidden;
+}
+.promo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+.promo-card-bundle::before { background: linear-gradient(90deg, #1d4ed8, #3b82f6); }
+.promo-card-group::before  { background: linear-gradient(90deg, #15803d, #22c55e); }
+.promo-card-refer::before  { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+
+.promo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+.promo-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.promo-badge-green  { background: linear-gradient(135deg, #15803d, #22c55e); }
+.promo-badge-purple { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+
+.promo-icon-wrap {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: rgba(29, 78, 216, 0.08);
+  color: #1d4ed8;
+}
+.promo-card-group .promo-icon-wrap  { background: rgba(21, 128, 61, 0.08); color: #15803d; }
+.promo-card-refer .promo-icon-wrap  { background: rgba(124, 58, 237, 0.08); color: #7c3aed; }
+.promo-icon-wrap svg { width: 26px; height: 26px; }
+
+.promo-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.promo-subtitle {
+  font-size: 0.82rem;
+  color: var(--slate);
+  margin-bottom: 16px;
+}
+.promo-highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 8px 24px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+.promo-highlight-green  { background: linear-gradient(135deg, #15803d, #22c55e); }
+.promo-highlight-purple { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+
+.promo-desc {
+  font-size: 0.88rem;
+  color: var(--slate);
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+.promo-btn {
+  width: 100%;
+  justify-content: center;
+}
+.promo-btn-green  { background: #15803d; }
+.promo-btn-green:hover  { background: #166534; }
+.promo-btn-purple { background: #7c3aed; }
+.promo-btn-purple:hover { background: #6d28d9; }
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 900px) {
   .hero         { padding: 68px 0 56px; }
@@ -166,6 +284,7 @@
   .hero-visual  { display: none; }
   .cta-inner    { flex-direction: column; text-align: center; }
   .cta-actions  { justify-content: center; }
+  .promo-grid   { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
 }
 @media (max-width: 480px) {
   .hero-title { font-size: 2rem; }

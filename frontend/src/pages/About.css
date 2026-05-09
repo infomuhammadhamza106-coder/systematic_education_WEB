@@ -14,11 +14,75 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  margin-bottom: 72px;
+  margin-bottom: 56px;
   overflow: hidden;
+}
+
+/* ── ACCA Content Partner ─────────────────────────── */
+.about-partner {
+  margin-bottom: 72px;
+}
+.about-partner-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: linear-gradient(135deg, #fef9ee 0%, #fff 100%);
+  border: 1px solid #e8d9b8;
+  border-radius: var(--radius-md);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.about-partner-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #c8102e, #e8c547, #c8102e);
+}
+.about-partner-logo {
+  flex-shrink: 0;
+}
+.acca-partner-svg {
+  width: 140px;
+  height: 140px;
+}
+.about-partner-info h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.about-partner-info p {
+  color: var(--slate);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+.about-partner-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.partner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #fff;
+  border: 1px solid #e0d5c0;
+  color: var(--navy);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 100px;
 }
 
 @media (max-width: 768px) {
   .about-story-grid { grid-template-columns: 1fr; gap: 36px; }
   .about-story-img { order: -1; }
+  .about-partner-card { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .about-partner-tags { justify-content: center; }
 }

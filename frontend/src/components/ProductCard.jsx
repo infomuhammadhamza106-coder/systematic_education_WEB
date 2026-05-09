@@ -6,6 +6,8 @@ export default function ProductCard({ product, type = 'acca' }) {
 
   const fallback = type === 'cima'
     ? '/images/cima_ebook.png'
+    : product.category === 'foundations'
+    ? '/images/study-text-acca-fia-fbt.webp'
     : product.category === 'knowledge'
     ? '/images/acca_knowledge.png'
     : product.category === 'skills'
@@ -20,7 +22,7 @@ export default function ProductCard({ product, type = 'acca' }) {
       <div className="product-card-img">
         <img src={img} alt={product.title} onError={e => { e.target.onerror = null; e.target.src = fallback }} />
         <span className={`product-badge ${type === 'cima' ? 'ebook' : 'physical'}`}>
-          {type === 'cima' ? 'eBook Only' : 'Physical + eBook'}
+          {type === 'cima' ? 'eBook Only' : 'Printed + eBook'}
         </span>
       </div>
       <div className="product-card-body">

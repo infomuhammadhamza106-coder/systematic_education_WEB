@@ -7,7 +7,7 @@ export default function FAQ() {
   const faqs = [
     { q: 'How long does delivery take?', a: 'Orders within Lahore are delivered in 1–2 working days. Nationwide delivery takes 3–5 working days via our courier partners.' },
     { q: 'What payment methods do you accept?', a: 'Cash on Delivery (COD) is only available for Lahore. For all other cities, orders must be paid through bank transfer before dispatch.' },
-    { q: 'Are these books 100% genuine and ACCA-approved?', a: 'Yes. Systematics Education is an authorised ACCA study material distributor. Every book carries the official ACCA Approved Content seal and includes free MyKaplan online access.' },
+    { q: 'Are these books 100% genuine and ACCA-approved?', a: 'Yes. Systematics Education is an official Kaplan distributor in Pakistan. Every book carries the official ACCA Approved Content seal and includes free MyKaplan online access.' },
     { q: 'Can I order in bulk for a college or study group?', a: 'Absolutely. We offer special discounts on bulk and institutional orders. Contact us on WhatsApp 0321 8488802 or email madiha@systematics.com.pk for a custom quote.' },
     { q: 'What if I receive a damaged book?', a: "Inspect your parcel on delivery. If a book is damaged, contact us within 48 hours and we'll arrange a free replacement." },
     { q: 'How do I access my eBook after purchase?', a: 'After verifying your payment receipt, your eBook access code will be sent via email or WhatsApp within 24 hours. Log in to MyKaplan and access your materials via BibliU on any device.' },

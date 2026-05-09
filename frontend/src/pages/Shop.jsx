@@ -6,12 +6,14 @@ import './Shop.css'
 
 const CATEGORIES = [
   { key: 'all',          label: 'All Books'            },
+  { key: 'foundations',  label: 'Foundations'           },
   { key: 'knowledge',    label: 'Applied Knowledge'    },
   { key: 'skills',       label: 'Applied Skills'       },
   { key: 'professional', label: 'Strategic Professional' },
 ]
 
 const SECTION_META = {
+  foundations:   { color: '#e8c547',      label: 'Foundations',            desc: 'FA1, MA1, FA2, MA2, FBT, FMA, FFA, FTX, FFM & FAU' },
   knowledge:    { color: 'var(--green)',  label: 'Applied Knowledge',      desc: 'BT, MA & FA — foundation level papers' },
   skills:       { color: 'var(--blue)',   label: 'Applied Skills',         desc: 'LW, PM, TX, FR, AA & FM' },
   professional: { color: 'var(--navy)',   label: 'Strategic Professional', desc: 'SBL, SBR, AFM, APM, ATX & AAA' },
@@ -35,11 +37,13 @@ export default function Shop() {
   }, [searchParams])
 
   const filtered     = activeTab === 'all' ? products : products.filter(p => p.category === activeTab)
+  const foundations   = filtered.filter(p => p.category === 'foundations')
   const knowledge    = filtered.filter(p => p.category === 'knowledge')
   const skills       = filtered.filter(p => p.category === 'skills')
   const professional = filtered.filter(p => p.category === 'professional')
 
   const sectionGroups = [
+    { key: 'foundations',  items: foundations  },
     { key: 'knowledge',    items: knowledge    },
     { key: 'skills',       items: skills       },
     { key: 'professional', items: professional },
@@ -52,7 +56,7 @@ export default function Shop() {
         <div className="container">
           <span className="page-hero-label">2025–26 Editions</span>
           <h1>ACCA Study Materials</h1>
-          <p>Genuine Kaplan ACCA Study Texts &amp; Exam Kits for 2025–26. 100% ACCA-approved — physical books and eBook access.</p>
+          <p>Genuine Kaplan ACCA Study Texts &amp; Exam Kits for 2025–26. 100% ACCA-approved — printed books and eBook access.</p>
         </div>
       </section>
 

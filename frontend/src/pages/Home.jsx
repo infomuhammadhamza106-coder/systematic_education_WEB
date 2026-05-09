@@ -20,7 +20,7 @@ export default function Home() {
   const faqs = [
     { q: 'How long does delivery take?', a: 'Orders within Lahore are delivered in 1–2 working days. Nationwide takes 3–5 working days via TCS or Leopard Courier.' },
     { q: 'What payment methods do you accept?', a: 'Cash on Delivery for Lahore only. All other cities require bank transfer (UBL) before dispatch.' },
-    { q: 'Are these books 100% genuine and ACCA-approved?', a: 'Yes. We are an authorised ACCA study material distributor. Every book carries the official ACCA Approved Content seal.' },
+    { q: 'Are these books 100% genuine and ACCA-approved?', a: 'Yes. We are an official Kaplan distributor in Pakistan. Every book carries the official ACCA Approved Content seal.' },
     { q: 'Can I order in bulk for a college or study group?', a: 'Absolutely. Contact us on WhatsApp 0321 8488802 or email madiha@systematics.com.pk for a custom institutional quote.' },
     { q: 'What if I receive a damaged book?', a: 'Inspect your parcel on delivery. If damaged, contact us within 48 hours and we will arrange a free replacement at no cost.' },
   ]
@@ -28,7 +28,7 @@ export default function Home() {
   const whyCards = [
     {
       title: '100% Genuine Books',
-      desc: 'All materials carry the official ACCA Approved Content seal — sourced directly from Kaplan Publishing.',
+      desc: 'All materials carry the official ACCA Approved Content seal — sourced directly from Kaplan Publishing, the world\'s leading provider.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -77,6 +77,7 @@ export default function Home() {
 
   const tabs = [
     { key: 'all',          label: 'All Books' },
+    { key: 'foundations',  label: 'Foundations' },
     { key: 'knowledge',    label: 'Applied Knowledge' },
     { key: 'skills',       label: 'Applied Skills' },
     { key: 'professional', label: 'Strategic Professional' },
@@ -90,12 +91,12 @@ export default function Home() {
           <div className="hero-inner">
             <div className="hero-content">
               <div className="hero-label">
-                Official ACCA Approved Distributor — Pakistan
+                Official Kaplan Distributor — Pakistan
               </div>
               <h1 className="hero-title">
-                ACCA &amp; CIMA<br />
-                <em>Study Materials</em><br />
-                2025–26 Edition
+                <span className="hero-highlight">ACCA</span> Excellence.<br />
+                <span className="hero-highlight">CIMA</span> Mastery.<br />
+                <em>2025–26 Edition</em>
               </h1>
               <p className="hero-desc">
                 Pakistan's most trusted source for ACCA and CIMA study materials.
@@ -117,7 +118,7 @@ export default function Home() {
               <div className="hero-trust">
                 <span className="trust-item">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  ACCA Approved Content
+                  Official Kaplan Partner
                 </span>
                 <span className="trust-item">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -158,6 +159,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       {/* ── FEATURED BOOKS ────────────────────────── */}
       <section className="section">
