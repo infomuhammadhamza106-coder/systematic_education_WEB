@@ -1,0 +1,163 @@
+<div align="center">
+
+<img src="frontend/public/images/logo.jpeg" alt="Systematics Education Logo" width="120" style="border-radius: 16px;" />
+
+# 📚 Systematics Education
+
+### Pakistan's Official ACCA & CIMA Study Material Distributor
+
+[![Live Site](https://img.shields.io/badge/🌐_Live_Site-Visit_Now-4f46e5?style=for-the-badge)](https://github.com/infomuhammadhamza106-coder/systematic_education_WEB)
+[![React](https://img.shields.io/badge/React-Vite-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://vitejs.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+[![License](https://img.shields.io/badge/License-MIT-f59e0b?style=for-the-badge)](LICENSE)
+
+---
+
+*A modern, full-stack e-commerce platform for ACCA & CIMA professional study materials in Pakistan.*
+
+</div>
+
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---|---|
+| 📖 **Book Catalogue** | Full ACCA & CIMA book listings with detailed product pages |
+| 🛒 **Shopping Cart** | Add/remove books, manage quantities |
+| 💳 **Bank Transfer Flow** | Secure bank transfer payment process |
+| 🛠️ **Admin Dashboard** | Full order lifecycle management |
+| 🗄️ **Supabase Database** | PostgreSQL-backed data layer |
+| 💬 **WhatsApp Support** | Floating WhatsApp customer support integration |
+
+---
+
+## 🏗️ Tech Stack
+
+<div align="center">
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | ⚛️ React 18 (Vite) + Custom CSS Design System |
+| **Backend** | 🟢 Node.js + Express.js REST API |
+| **Database** | 🐘 Supabase (PostgreSQL) |
+| **Deployment** | ▲ Vercel (Frontend) + Railway/Render (Backend) |
+
+</div>
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js `v18+`
+- npm `v9+`
+- A [Supabase](https://supabase.com) project (free tier works)
+
+---
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/infomuhammadhamza106-coder/systematic_education_WEB.git
+cd systematic_education_WEB
+```
+
+---
+
+### 2️⃣ Backend Setup
+
+```bash
+cd backend
+npm install
+cp .env.example .env      # fill in your values (see table below)
+node scripts/migrate.js   # create database tables
+npm run dev               # starts on http://localhost:5000
+```
+
+---
+
+### 3️⃣ Frontend Setup
+
+```bash
+cd frontend
+npm install
+cp .env.example .env      # fill in your values (see table below)
+npm run dev               # starts on http://localhost:5173
+```
+
+---
+
+## 🔑 Environment Variables
+
+### Backend — `backend/.env`
+
+| Variable | Description | Example |
+|---|---|---|
+| `PORT` | Server port | `5000` |
+| `FRONTEND_URL` | Frontend URL for CORS | `http://localhost:5173` |
+| `ADMIN_PASSWORD` | Admin panel password | `your_secure_password` |
+| `SUPABASE_URL` | Supabase project URL | `https://xxx.supabase.co` |
+| `SUPABASE_SERVICE_KEY` | Supabase service role key | `eyJhbGci...` |
+
+### Frontend — `frontend/.env`
+
+| Variable | Description | Example |
+|---|---|---|
+| `VITE_API_URL` | Backend API base URL | `http://localhost:5000` |
+
+> ⚠️ **Never commit your `.env` files.** They are already added to `.gitignore`.
+
+---
+
+## 🛠️ Admin Panel
+
+1. Navigate to `/admin` on the frontend
+2. Login with your `ADMIN_PASSWORD`
+3. Manage orders, update statuses, and track fulfillment
+
+---
+
+## 📁 Project Structure
+
+```
+systematic_education_WEB/
+├── 📂 frontend/               # React (Vite) app
+│   ├── src/
+│   │   ├── components/        # Reusable UI components
+│   │   ├── pages/             # Page-level components
+│   │   └── App.jsx
+│   ├── public/images/         # Product images & assets
+│   └── vercel.json            # Vercel routing config
+│
+├── 📂 backend/                # Express.js API
+│   ├── routes/                # API route handlers
+│   ├── scripts/migrate.js     # DB migration script
+│   └── server.js              # App entry point
+│
+└── README.md
+```
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+
+---
+
+## 📬 Contact & Support
+
+For business enquiries or support, reach out via **WhatsApp** through the floating button on the live site.
+
+---
+
+<div align="center">
+
+Made with ❤️ in Pakistan 🇵🇰
+
+**Systematics Education** — *Empowering Future Accountants*
+
+</div>
