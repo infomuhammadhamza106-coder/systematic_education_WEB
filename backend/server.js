@@ -18,6 +18,8 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   'https://systematic-education-web.vercel.app',
+  'https://systematics.com.pk',
+  'https://www.systematics.com.pk',
   (process.env.FRONTEND_URL || '').trim(),
 ].filter(Boolean);
 
