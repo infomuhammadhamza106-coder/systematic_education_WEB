@@ -1,64 +1,40 @@
-// Quick SMTP test script - trying port 587 (STARTTLS)
-require('dotenv').config();
-const nodemailer = require('nodemailer');
+// Test Resend - sending to account owner email (allowed without domain verification)
+const { Resend } = require('resend');
+
+const resend = new Resend('re_TLzPRsxJ_8sCmo5sbqW58o7TY2xkCac6N');
 
 async function test() {
-  console.log('Testing SMTP on port 587 (STARTTLS)...');
-  console.log('Host:', process.env.SMTP_HOST);
-  console.log('User:', process.env.SMTP_USER);
+  console.log('Testing Resend API to your Gmail...');
   
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: 587,
-    secure: false, // STARTTLS
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-    connectionTimeout: 10000, // 10s timeout
-    socketTimeout: 10000,
-  });
-
   try {
-    await transporter.verify();
-    console.log('✅ SMTP connection successful on port 587!');
-
-    const info = await transporter.sendMail({
-      from: `"Systematics Education" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_USER,
-      subject: '✅ Test Email - Systematics Education',
-      html: '<h2>Email is working!</h2><p>If you see this, your SMTP setup is correct.</p>',
+    const { data, error } = await resend.emails.send({
+      from: 'Systematics Education <onboarding@resend.dev>',
+      to: ['info.muhammadhamza106@gmail.com'],
+      subject: '✅ Systematics Education - Order Email Test',
+      html: `
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
+          <div style="background:#4f46e5;padding:24px;text-align:center;border-radius:8px 8px 0 0;">
+            <h1 style="color:#fff;margin:0;">📚 Systematics Education</h1>
+          </div>
+          <div style="padding:24px;background:#fff;border:1px solid #e5e7eb;">
+            <h2 style="color:#16a34a;">🎉 Email Notifications Working!</h2>
+            <p>This confirms the Resend API is connected correctly.</p>
+            <p><strong>Next step:</strong> Verify your domain <code>systematics.com.pk</code> in Resend to send to all customers.</p>
+          </div>
+        </div>
+      `,
     });
 
-    console.log('✅ Test email sent! Message ID:', info.messageId);
-    console.log('Check your inbox (and Junk folder)');
-  } catch (err) {
-    console.error('❌ Port 587 Error:', err.message);
-    
-    // Also try port 26 (alternate SMTP port used by some hosts)
-    console.log('\nTrying port 26...');
-    try {
-      const t2 = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: 26,
-        secure: false,
-        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-        connectionTimeout: 10000,
-        socketTimeout: 10000,
-      });
-      await t2.verify();
-      console.log('✅ Port 26 works!');
-      const info = await t2.sendMail({
-        from: `"Systematics Education" <${process.env.SMTP_USER}>`,
-        to: process.env.SMTP_USER,
-        subject: '✅ Test Email - Systematics Education',
-        html: '<h2>Email is working!</h2><p>Port 26 works. Your SMTP setup is correct.</p>',
-      });
-      console.log('✅ Test email sent! Message ID:', info.messageId);
-    } catch (err2) {
-      console.error('❌ Port 26 Error:', err2.message);
-      console.log('\n❌ All ports failed. SMTP may be blocked by your network/ISP.');
+    if (error) {
+      console.error('❌ Error:', error);
+      return;
     }
+
+    console.log('✅ Email sent to your Gmail!');
+    console.log('Email ID:', data.id);
+    console.log('Check info.muhammadhamza106@gmail.com');
+  } catch (err) {
+    console.error('❌ Error:', err.message);
   }
 }
 
