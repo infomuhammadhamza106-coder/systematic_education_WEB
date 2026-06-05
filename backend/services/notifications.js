@@ -1,25 +1,45 @@
 /**
  * Email Notification Service for Systematics Education
- * Uses Brevo (HTTP-based) — works on Vercel, no DNS changes needed
+ * Uses Brevo REST API (HTTP-based) — works on Vercel
  * Falls back to Nodemailer SMTP for local development
  */
 
-const Brevo = require('@getbrevo/brevo');
 const nodemailer = require('nodemailer');
 
-let brevoClient = null;
 let smtpTransporter = null;
 
 /**
- * Get Brevo API client (HTTP-based, works on Vercel)
+ * Send email via Brevo REST API (HTTP — works on Vercel)
  */
-function getBrevo() {
-  if (!brevoClient && process.env.BREVO_API_KEY) {
-    brevoClient = new Brevo.TransactionalEmailsApi();
-    brevoClient.setApiKey(Brevo.TransactionalEmailsApiApiKeys.apiKey, process.env.BREVO_API_KEY);
-    console.log('📧 Brevo email client ready');
+async function sendViaBrevo(to, subject, html) {
+  const apiKey = process.env.BREVO_API_KEY;
+  if (!apiKey) return null;
+
+  const senderEmail = process.env.BREVO_SENDER_EMAIL || 'madiha@systematics.com.pk';
+  const senderName = process.env.BREVO_SENDER_NAME || 'Systematics Education';
+
+  const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'accept': 'application/json',
+      'api-key': apiKey,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      sender: { name: senderName, email: senderEmail },
+      to: [{ email: to }],
+      subject,
+      htmlContent: html,
+    }),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || `Brevo API error: ${res.status}`);
   }
-  return brevoClient;
+
+  return data.messageId;
 }
 
 /**
@@ -47,20 +67,10 @@ function getSMTP() {
  */
 async function sendEmail(to, subject, html) {
   try {
-    // Method 1: Brevo (HTTP-based — works on Vercel)
-    const brevo = getBrevo();
-    if (brevo) {
-      const senderEmail = process.env.BREVO_SENDER_EMAIL || 'madiha@systematics.com.pk';
-      const senderName = process.env.BREVO_SENDER_NAME || 'Systematics Education';
-
-      const sendSmtpEmail = new Brevo.SendSmtpEmail();
-      sendSmtpEmail.sender = { name: senderName, email: senderEmail };
-      sendSmtpEmail.to = [{ email: to }];
-      sendSmtpEmail.subject = subject;
-      sendSmtpEmail.htmlContent = html;
-
-      const result = await brevo.sendTransacEmail(sendSmtpEmail);
-      console.log(`📧 Email sent to ${to} via Brevo — ID: ${result.body.messageId}`);
+    // Method 1: Brevo REST API (HTTP — works on Vercel)
+    if (process.env.BREVO_API_KEY) {
+      const messageId = await sendViaBrevo(to, subject, html);
+      console.log(`📧 Email sent to ${to} via Brevo — ID: ${messageId}`);
       return true;
     }
 
