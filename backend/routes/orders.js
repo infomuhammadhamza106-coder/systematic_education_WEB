@@ -1,10 +1,12 @@
 const express  = require('express');
 const router   = express.Router();
 const supabase = require('../db');
+const { sendEmail } = require('../services/notifications');
+const { orderConfirmationCustomer, newOrderAlertOwner } = require('../services/emailTemplates');
 
 // POST /api/orders
 router.post('/', async (req, res) => {
-  const { items, customerName, email, phone, city, paymentMethod, bankTransferRef } = req.body;
+  const { items, customerName, email, phone, city, address, paymentMethod, bankTransferRef } = req.body;
 
   if (!items || !items.length || !customerName || !phone || !city) {
     return res.status(400).json({ success: false, message: 'Missing required order fields.' });
@@ -42,6 +44,26 @@ router.post('/', async (req, res) => {
   }
 
   console.log('🛒 Order saved:', orderId);
+
+  // ── Send email notifications (fire-and-forget) ──────────────
+  const orderData = { orderId, customerName, email, phone, city, address, items, subtotal, deliveryCharge, grandTotal, paymentMethod, bankTransferRef: paymentMethod === 'bank' ? (bankTransferRef?.trim() || '') : '' };
+
+  // Email to CUSTOMER (if they provided an email)
+  if (email) {
+    sendEmail(
+      email,
+      `Order Confirmed — ${orderId} | Systematics Education`,
+      orderConfirmationCustomer(orderData)
+    ).catch(() => {});
+  }
+
+  // Email to OWNER (always)
+  const ownerEmail = process.env.OWNER_EMAIL || 'madiha@systematics.com.pk';
+  sendEmail(
+    ownerEmail,
+    `🛒 New Order — ${orderId} | ${customerName} | Rs. ${grandTotal.toLocaleString()}`,
+    newOrderAlertOwner(orderData)
+  ).catch(() => {});
 
   const itemList = items.map(i => `${i.qty}× ${i.name}`).join(', ');
   const waMsg    = `Hi! I'd like to place an order.\nOrder ID: ${orderId}\nName: ${customerName}\nPhone: ${phone}\nCity: ${city}\nItems: ${itemList}\nTotal: Rs. ${grandTotal}`;
