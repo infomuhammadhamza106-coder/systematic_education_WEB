@@ -67,10 +67,7 @@ export default function AdminLogin() {
           </button>
         </form>
 
-        <p className="admin-login-hint">
-          Default password: <code>systematics2025</code><br/>
-          Change via <code>ADMIN_PASSWORD</code> in backend <code>.env</code>
-        </p>
+
       </div>
     </div>
   )
