@@ -51,26 +51,46 @@ app.get('/api/health', (req, res) => {
 
 // Debug: test email sending from deployed environment
 app.get('/api/test-email', async (req, res) => {
-  const { sendEmail } = require('./services/notifications');
   const cpanelUrl = process.env.CPANEL_EMAIL_URL || 'NOT SET';
-  const cpanelKey = process.env.CPANEL_EMAIL_KEY ? 'SET (' + process.env.CPANEL_EMAIL_KEY.substring(0, 5) + '...)' : 'NOT SET';
+  const cpanelKey = process.env.CPANEL_EMAIL_KEY || 'NOT SET';
   
   try {
-    const result = await sendEmail(
-      'madiha@systematics.com.pk',
-      '✅ Vercel Deploy Test — ' + new Date().toISOString(),
-      '<h2>Email from Vercel works!</h2><p>CPANEL_EMAIL_URL: ' + cpanelUrl + '</p>'
-    );
+    // Call PHP endpoint directly to see raw response
+    const response = await fetch(cpanelUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': cpanelKey,
+      },
+      body: JSON.stringify({
+        to: 'madiha@systematics.com.pk',
+        subject: '✅ Vercel Direct Test — ' + new Date().toISOString(),
+        html: '<h2>Email from Vercel works!</h2>',
+      }),
+    });
+    
+    const responseText = await response.text();
+    let responseData;
+    try { responseData = JSON.parse(responseText); } catch(e) { responseData = responseText; }
+    
     res.json({ 
-      success: true, 
-      emailResult: result,
-      env: { CPANEL_EMAIL_URL: cpanelUrl, CPANEL_EMAIL_KEY: cpanelKey }
+      success: response.ok,
+      status: response.status,
+      phpResponse: responseData,
+      env: { 
+        CPANEL_EMAIL_URL: cpanelUrl, 
+        CPANEL_EMAIL_KEY: cpanelKey.substring(0, 8) + '...'
+      }
     });
   } catch (err) {
     res.json({ 
       success: false, 
       error: err.message,
-      env: { CPANEL_EMAIL_URL: cpanelUrl, CPANEL_EMAIL_KEY: cpanelKey }
+      errorType: err.constructor.name,
+      env: { 
+        CPANEL_EMAIL_URL: cpanelUrl, 
+        CPANEL_EMAIL_KEY: cpanelKey.substring(0, 8) + '...'
+      }
     });
   }
 });
