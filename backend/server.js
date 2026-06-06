@@ -49,6 +49,32 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Systematics Education API running', timestamp: new Date().toISOString() });
 });
 
+// Debug: test email sending from deployed environment
+app.get('/api/test-email', async (req, res) => {
+  const { sendEmail } = require('./services/notifications');
+  const cpanelUrl = process.env.CPANEL_EMAIL_URL || 'NOT SET';
+  const cpanelKey = process.env.CPANEL_EMAIL_KEY ? 'SET (' + process.env.CPANEL_EMAIL_KEY.substring(0, 5) + '...)' : 'NOT SET';
+  
+  try {
+    const result = await sendEmail(
+      'madiha@systematics.com.pk',
+      '✅ Vercel Deploy Test — ' + new Date().toISOString(),
+      '<h2>Email from Vercel works!</h2><p>CPANEL_EMAIL_URL: ' + cpanelUrl + '</p>'
+    );
+    res.json({ 
+      success: true, 
+      emailResult: result,
+      env: { CPANEL_EMAIL_URL: cpanelUrl, CPANEL_EMAIL_KEY: cpanelKey }
+    });
+  } catch (err) {
+    res.json({ 
+      success: false, 
+      error: err.message,
+      env: { CPANEL_EMAIL_URL: cpanelUrl, CPANEL_EMAIL_KEY: cpanelKey }
+    });
+  }
+});
+
 // 404
 app.use((req, res) => {
   res.status(404).json({ success: false, message: 'Route not found' });
