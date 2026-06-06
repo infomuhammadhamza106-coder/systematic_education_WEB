@@ -45,36 +45,46 @@ router.post('/', async (req, res) => {
 
   console.log('🛒 Order saved:', orderId);
 
-  // ── Send email notifications (fire-and-forget) ──────────────
+  // ── Send email notifications (await before response — required for Vercel serverless)
   const orderData = { orderId, customerName, email, phone, city, address, items, subtotal, deliveryCharge, grandTotal, paymentMethod, bankTransferRef: paymentMethod === 'bank' ? (bankTransferRef?.trim() || '') : '' };
+
+  const emailPromises = [];
 
   // Email to CUSTOMER (if they provided an email)
   if (email) {
-    sendEmail(
-      email,
-      `Order Confirmed — ${orderId} | Systematics Education`,
-      orderConfirmationCustomer(orderData)
-    ).catch(() => {});
+    emailPromises.push(
+      sendEmail(
+        email,
+        `Order Confirmed — ${orderId} | Systematics Education`,
+        orderConfirmationCustomer(orderData)
+      ).catch(err => console.error('Customer email error:', err.message))
+    );
   }
 
-  // Email to OWNER (always — send to both primary + backup for reliability)
+  // Email to OWNER (always)
   const ownerEmail = process.env.OWNER_EMAIL || 'madiha@systematics.com.pk';
-  const ownerBackupEmail = process.env.OWNER_BACKUP_EMAIL || '';
-  
-  sendEmail(
-    ownerEmail,
-    `🛒 New Order — ${orderId} | ${customerName} | Rs. ${grandTotal.toLocaleString()}`,
-    newOrderAlertOwner(orderData)
-  ).catch(() => {});
-
-  // Backup copy to Gmail (guaranteed delivery)
-  if (ownerBackupEmail && ownerBackupEmail !== ownerEmail) {
+  emailPromises.push(
     sendEmail(
-      ownerBackupEmail,
+      ownerEmail,
       `🛒 New Order — ${orderId} | ${customerName} | Rs. ${grandTotal.toLocaleString()}`,
       newOrderAlertOwner(orderData)
-    ).catch(() => {});
+    ).catch(err => console.error('Owner email error:', err.message))
+  );
+
+  // Backup copy to Gmail (if configured)
+  const ownerBackupEmail = process.env.OWNER_BACKUP_EMAIL || '';
+  if (ownerBackupEmail && ownerBackupEmail !== ownerEmail) {
+    emailPromises.push(
+      sendEmail(
+        ownerBackupEmail,
+        `🛒 New Order — ${orderId} | ${customerName} | Rs. ${grandTotal.toLocaleString()}`,
+        newOrderAlertOwner(orderData)
+      ).catch(err => console.error('Backup email error:', err.message))
+    );
   }
+
+  // Wait for all emails to be sent before responding (Vercel kills process after res.json)
+  await Promise.all(emailPromises);
 
   const itemList = items.map(i => `${i.qty}× ${i.name}`).join(', ');
   const waMsg    = `Hi! I'd like to place an order.\nOrder ID: ${orderId}\nName: ${customerName}\nPhone: ${phone}\nCity: ${city}\nItems: ${itemList}\nTotal: Rs. ${grandTotal}`;
