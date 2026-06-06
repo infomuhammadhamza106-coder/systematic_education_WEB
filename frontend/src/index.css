@@ -299,17 +299,39 @@ button { cursor: pointer; font-family: 'Inter', sans-serif; }
 @media (max-width: 900px) {
   .contact-grid { grid-template-columns: 1fr; }
   .stats-grid   { grid-template-columns: 1fr; }
-  .stat-item    { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-item    { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 16px; }
   .stat-item:last-child { border-bottom: none; }
+  .container { padding: 0 16px; }
 }
 @media (max-width: 768px) {
-  .section { padding: 60px 0; }
-  .products-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .section { padding: 52px 0; }
+  .section-header { margin-bottom: 36px; }
+  .products-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .page-hero { padding: 48px 0 40px; }
+  .page-hero h1 { font-size: 1.6rem; }
+  .section-title { font-size: 1.5rem; }
+  .btn { padding: 12px 20px; font-size: 0.875rem; }
+  .contact-form-card { padding: 28px 20px; }
+  .contact-info-card { padding: 28px 22px; }
+  /* Make tables horizontally scrollable */
+  .price-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
 @media (max-width: 480px) {
-  .products-grid { grid-template-columns: 1fr; }
+  html { font-size: 15px; }
+  .container { padding: 0 14px; }
+  .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .why-grid { grid-template-columns: 1fr; background: none; border: 1px solid var(--border); gap: 0; }
-  .why-card { border-bottom: 1px solid var(--border); }
-  .section  { padding: 48px 0; }
-  .contact-form-card { padding: 28px 20px; }
+  .why-card { border-bottom: 1px solid var(--border); padding: 24px 18px; }
+  .section  { padding: 40px 0; }
+  .section-sm { padding: 36px 0; }
+  .contact-form-card { padding: 22px 16px; }
+  .page-hero { padding: 36px 0 32px; }
+  .page-hero h1 { font-size: 1.35rem; }
+  .stat-num { font-size: 1.8rem; }
+  .form-group input,
+  .form-group textarea,
+  .form-group select { padding: 12px 14px; font-size: 16px; /* prevents iOS zoom */ }
+}
+@media (max-width: 360px) {
+  .products-grid { grid-template-columns: 1fr; }
 }

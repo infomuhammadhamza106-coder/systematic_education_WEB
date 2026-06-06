@@ -142,28 +142,33 @@
 /* ── Mobile ── */
 @media (max-width: 1100px) { .nav-search { display: none; } }
 @media (max-width: 900px) {
+  .navbar { position: sticky; top: 0; z-index: 1000; }
+  .nav-inner { height: 56px; padding: 0 16px; }
+  .nav-logo-img { height: 40px; }
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 64px; left: 0; right: 0;
+    top: 56px; left: 0; right: 0;
     background: #fff;
-    padding: 12px 24px 20px;
+    padding: 12px 16px 20px;
     box-shadow: var(--shadow-lg);
     border-top: 1px solid var(--border);
     gap: 2px;
     z-index: 999;
     align-items: flex-start;
+    max-height: 80vh;
+    overflow-y: auto;
   }
   .nav-links.open { display: flex; }
   .nav-links a {
     width: 100%;
-    padding: 10px 4px;
+    padding: 12px 4px;
     border-bottom: 1px solid var(--border);
     border-right: none;
+    font-size: 0.9rem;
   }
   .nav-links a:last-child { border-bottom: none; }
-  .cart-btn, .nav-cta { width: 100% !important; justify-content: center !important; margin-top: 8px; }
+  .cart-btn, .nav-cta { width: 100% !important; justify-content: center !important; margin-top: 8px; padding: 12px 16px !important; }
   .hamburger { display: flex; }
-  .navbar { position: relative; }
 }
