@@ -57,13 +57,24 @@ router.post('/', async (req, res) => {
     ).catch(() => {});
   }
 
-  // Email to OWNER (always)
+  // Email to OWNER (always — send to both primary + backup for reliability)
   const ownerEmail = process.env.OWNER_EMAIL || 'madiha@systematics.com.pk';
+  const ownerBackupEmail = process.env.OWNER_BACKUP_EMAIL || '';
+  
   sendEmail(
     ownerEmail,
     `🛒 New Order — ${orderId} | ${customerName} | Rs. ${grandTotal.toLocaleString()}`,
     newOrderAlertOwner(orderData)
   ).catch(() => {});
+
+  // Backup copy to Gmail (guaranteed delivery)
+  if (ownerBackupEmail && ownerBackupEmail !== ownerEmail) {
+    sendEmail(
+      ownerBackupEmail,
+      `🛒 New Order — ${orderId} | ${customerName} | Rs. ${grandTotal.toLocaleString()}`,
+      newOrderAlertOwner(orderData)
+    ).catch(() => {});
+  }
 
   const itemList = items.map(i => `${i.qty}× ${i.name}`).join(', ');
   const waMsg    = `Hi! I'd like to place an order.\nOrder ID: ${orderId}\nName: ${customerName}\nPhone: ${phone}\nCity: ${city}\nItems: ${itemList}\nTotal: Rs. ${grandTotal}`;

@@ -1,30 +1,20 @@
-// Test Brevo REST API - uses .env for credentials
+// Check delivery status for madiha emails
 require('dotenv').config();
 
-async function test() {
-  console.log('Testing Brevo REST API...');
-
-  const res = await fetch('https://api.brevo.com/v3/smtp/email', {
-    method: 'POST',
-    headers: {
-      'accept': 'application/json',
-      'api-key': process.env.BREVO_API_KEY,
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      sender: { name: 'Systematics Education', email: 'madiha@systematics.com.pk' },
-      to: [{ email: 'madiha@systematics.com.pk' }],
-      subject: '✅ Test - Order Notifications Working!',
-      htmlContent: '<h2>🎉 Email notifications are working!</h2><p>This is a test from Systematics Education via Brevo.</p>',
-    }),
+async function check() {
+  const res = await fetch('https://api.brevo.com/v3/smtp/statistics/events?limit=5&sort=desc&email=madiha@systematics.com.pk', {
+    headers: { 'api-key': process.env.BREVO_API_KEY, 'accept': 'application/json' },
   });
-
   const data = await res.json();
-  if (res.ok) {
-    console.log('✅ Email sent!', data);
-  } else {
-    console.error('❌ Error:', data);
-  }
+  
+  console.log('All events for madiha@systematics.com.pk:\n');
+  data.events.forEach((e, i) => {
+    console.log(`${i+1}. [${e.event.toUpperCase()}]`);
+    console.log(`   Subject: ${e.subject}`);
+    console.log(`   From: ${e.from}`);
+    if (e.reason) console.log(`   REASON: ${e.reason}`);
+    console.log(`   Time: ${e.date}\n`);
+  });
 }
 
-test();
+check();

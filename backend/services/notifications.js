@@ -1,6 +1,6 @@
 /**
  * Email Notification Service for Systematics Education
- * Uses Brevo REST API (HTTP-based) — works on Vercel
+ * Uses cPanel PHP endpoint (HTTP) for reliable delivery
  * Falls back to Nodemailer SMTP for local development
  */
 
@@ -9,37 +9,29 @@ const nodemailer = require('nodemailer');
 let smtpTransporter = null;
 
 /**
- * Send email via Brevo REST API (HTTP — works on Vercel)
+ * Send email via cPanel PHP endpoint (HTTP — works on Vercel!)
  */
-async function sendViaBrevo(to, subject, html) {
-  const apiKey = process.env.BREVO_API_KEY;
-  if (!apiKey) return null;
+async function sendViaCpanel(to, subject, html) {
+  const endpoint = process.env.CPANEL_EMAIL_URL;
+  const apiKey = process.env.CPANEL_EMAIL_KEY;
+  if (!endpoint || !apiKey) return null;
 
-  const senderEmail = process.env.BREVO_SENDER_EMAIL || 'madiha@systematics.com.pk';
-  const senderName = process.env.BREVO_SENDER_NAME || 'Systematics Education';
-
-  const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+  const res = await fetch(endpoint, {
     method: 'POST',
     headers: {
-      'accept': 'application/json',
-      'api-key': apiKey,
-      'content-type': 'application/json',
+      'Content-Type': 'application/json',
+      'X-API-Key': apiKey,
     },
-    body: JSON.stringify({
-      sender: { name: senderName, email: senderEmail },
-      to: [{ email: to }],
-      subject,
-      htmlContent: html,
-    }),
+    body: JSON.stringify({ to, subject, html }),
   });
 
   const data = await res.json();
 
-  if (!res.ok) {
-    throw new Error(data.message || `Brevo API error: ${res.status}`);
+  if (!res.ok || !data.success) {
+    throw new Error(data.error || `cPanel email error: ${res.status}`);
   }
 
-  return data.messageId;
+  return data.message;
 }
 
 /**
@@ -63,14 +55,14 @@ function getSMTP() {
 
 /**
  * Send an email (fire-and-forget, never throws)
- * Tries Brevo first (HTTP, works on Vercel), falls back to SMTP (local dev)
+ * Tries cPanel PHP first (HTTP, works on Vercel), falls back to SMTP (local dev)
  */
 async function sendEmail(to, subject, html) {
   try {
-    // Method 1: Brevo REST API (HTTP — works on Vercel)
-    if (process.env.BREVO_API_KEY) {
-      const messageId = await sendViaBrevo(to, subject, html);
-      console.log(`📧 Email sent to ${to} via Brevo — ID: ${messageId}`);
+    // Method 1: cPanel PHP endpoint (HTTP — works on Vercel)
+    if (process.env.CPANEL_EMAIL_URL) {
+      const result = await sendViaCpanel(to, subject, html);
+      console.log(`📧 Email sent to ${to} via cPanel — ${result}`);
       return true;
     }
 
